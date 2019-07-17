@@ -5,6 +5,7 @@ import com.mine.api.impl.Chinese;
 import com.mine.api.impl.StoneAxe;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
@@ -29,9 +30,10 @@ public class BeanTest {
         Person p = ctx.getBean("chinese", Person.class);
         p.useAxe();
         //Resource
-        //BeanDefinition
+       // BeanDefinition
         //BeanDefinitionReader
         //ServletContextResourcePatternResolver
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         Arrays.asList(ctx.getBeanDefinitionNames()).stream().forEach(x -> System.out.println("=============" + x));
 
     }
