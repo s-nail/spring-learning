@@ -8,9 +8,17 @@ import redis.clients.jedis.JedisPoolConfig;
  * Created by jiayq24996 on 2019-11-12
  */
 public class JedisUtil {
+    public static Jedis getDefaultJedis() {
+        return getJedis("127.0.0.1", 6379);
+    }
+
     public static Jedis getJedis(String host, int port) {
         Jedis jedis = new Jedis(host, port);
         return jedis;
+    }
+
+    public static Jedis getDefaultJedisFromPool() {
+        return getJedisFromPool("127.0.0.1", 6379);
     }
 
     public static Jedis getJedisFromPool(String host, int port) {
