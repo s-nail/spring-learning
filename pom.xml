@@ -12,6 +12,7 @@
         <module>proxy</module>
         <module>loadbeans</module>
         <module>javademo</module>
+        <module>redis</module>
     </modules>
 
 
