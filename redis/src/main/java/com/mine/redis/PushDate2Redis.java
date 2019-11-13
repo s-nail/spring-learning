@@ -3,6 +3,8 @@ package com.mine.redis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 
+import java.util.List;
+
 /**
  * 使用setnx和set指令实现分布式锁
  * Created by jiayq24996 on 2019-11-12
@@ -10,8 +12,13 @@ import redis.clients.jedis.params.SetParams;
 public class PushDate2Redis {
     private static void pushLargeNumberOfStrDate() {
         Jedis jedis = JedisUtil.getDefaultJedis();
-        for (int i = 0; i < 100000; i++) {
+        //含过期时间
+        /*for (int i = 0; i < 100000; i++) {
             System.out.println(i + ":" + jedis.setex("name" + i, 60, "Lee" + i));
+        }*/
+        //不含过期时间
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(i + ":" + jedis.set("name" + i, "Lee" + i));
         }
 
     }
@@ -58,8 +65,25 @@ public class PushDate2Redis {
         System.out.println("res4:" + res4);
     }
 
+    private static void Producer() {
+        Jedis jedis = JedisUtil.getDefaultJedis();
+        Long str = jedis.lpush("topic", "test form Producer");
+        System.out.println("Producer:" + str);
+    }
+
+    private static void Customer() {
+        Jedis jedis = JedisUtil.getDefaultJedis();
+        String str2 = jedis.lpop("topic");
+        //List<String> str2 = jedis.blpop("topic");
+        System.out.println("Customer:" + str2);
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        //pushLargeNumberOfStrDate();
-        lock();
+        pushLargeNumberOfStrDate();
+        //lock();
+
+//        Producer();
+//        Customer();
+        //Customer();
     }
 }
