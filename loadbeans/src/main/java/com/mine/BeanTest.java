@@ -1,18 +1,12 @@
 package com.mine;
 
 import com.mine.api.Person;
-import com.mine.api.impl.Chinese;
-import com.mine.api.impl.StoneAxe;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionReader;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -36,22 +30,24 @@ public class BeanTest {
         //ServletContextResourcePatternResolver
         //DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         //Arrays.asList(ctx.getBeanDefinitionNames()).stream().forEach(x -> System.out.println("=============" + x));
-        String a="1235";
-        Integer b=1235;
-        Integer e=1235;
-        int c=1234;
-        int d=1234;
+        String a = "1235";
+        Integer b = 1235;
+        Integer e = 1235;
+        int c = 1234;
+        int d = 1234;
         System.out.println(b.equals(Integer.valueOf(a)));
-        System.out.println(a.equals(b+""));
-        System.out.println(b==e);
-        System.out.println(c==d);
+        System.out.println(a.equals(b + ""));
+        System.out.println(b == e);
+        System.out.println(c == d);
         System.out.println("=========================================");
         Set<String> set = new HashSet<String>();
-        for(int i= 0;i<5;i++){
-            set.add(i+"");
+        for (int i = 0; i < 5; i++) {
+            set.add(i + "");
         }
         System.out.println(set.add("2"));
         System.out.println(set.add(null));
+        //BeanDefinition
+        //BeanDefinitonRegistry
     }
 
 
