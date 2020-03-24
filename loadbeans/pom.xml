@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-gumballMachine</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
     </dependencies>
