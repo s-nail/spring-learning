@@ -49,7 +49,7 @@ public class HelloWorld {
 
 
     public interface CLibrary extends Library {
-        CLibrary INSTANCE = (CLibrary) Native.load("license", CLibrary.class);
+        CLibrary INSTANCE = (CLibrary) Native.loadLibrary("license", CLibrary.class);
 
         void Save_Exter_License(String lpLicenseNo, String szFileName);
 
@@ -65,67 +65,13 @@ public class HelloWorld {
 
     }
 
-    /**
-     * @描述：动态链接库桥接接口
-     * @class：SZEncrypt.java
-     */
-    public interface SZEntcryptLib extends Library {
-        SZEntcryptLib INSTANCE = (SZEntcryptLib) Native.load("SZEncrypt", SZEntcryptLib.class);
-
-        /**
-         * 返回读取软加密的buffer信息（需传入prepareRead 返回的 token值， buffer 大小需>= 2048）
-         *
-         * @param buffer
-         * @param len
-         * @return
-         */
-        int getTzSoftEncryptBuffer(Pointer buffer, int len);
-
-        /**
-         * 解密字符串，expireTime 和 installTime 需要>= 128
-         *
-         * @param expireTime
-         * @param expireLen
-         * @param installTime
-         * @param installLen
-         * @param encryptBuffer
-         * @param buflen
-         * @return
-         */
-        int getTimeStringFromEncryptBuffer(Pointer expireTime, int expireLen,
-                                           Pointer installTime, int installLen, Pointer encryptBuffer,
-                                           int buflen);
-
-        /**
-         * 写入用户自定义信息（当前时间信息）
-         *
-         * @param encryptType
-         * @param encryptPath
-         * @param currDateTime
-         * @return
-         */
-        int writeDateTime(int encryptType, byte[] encryptPath, byte[] currDateTime);
-
-        /**
-         * 读取用户自定义信息（当前时间信息）
-         *
-         * @param encryptType
-         * @param encryptPath
-         * @param currDateTime
-         * @param dateTimeLen
-         * @return
-         */
-        int readDateTime(int encryptType, Pointer encryptPath, Pointer currDateTime, int dateTimeLen);
-    }
-
-
     public static void main(String[] args) {
-        int result = CLibrary.INSTANCE.Init_Dll("D:\\license.dat");
+      /*  int result = CLibrary.INSTANCE.Init_Dll("D:\\license.dat");
         System.out.println("result:" + result);
         //Pointer pointer = new Memory(16);
         TestStruct.ByReference license = new TestStruct.ByReference();
-        license.nSize = 1024;
-        license.lpChecksum = "MD5".getBytes();
+        //license.nSize = 1024;
+        //license.lpChecksum = "MD5".getBytes();
         license.nInternalNo = 1111;
         license.szLicenseNo = "1234".getBytes();
         license.szEndUserName = "userTest".getBytes();
@@ -134,14 +80,17 @@ public class HelloWorld {
         license.nValidDate = 20200324;
         license.uiApplyProtocol = 0x0002;
         license.nMaxClient = 16;
-        license.nActiveClient = 6;
+        //license.nActiveClient = 6;
         license.nMaxSendPackets = 5;
         license.nMaxSendBytes = 258;
-        license.bRouteByName = 0;
-        license.bBulkSend = 99;
+        //license.bRouteByName = 0;
+        //license.bBulkSend = 99;
         String licenseNo = CLibrary.INSTANCE.Save_Inter_License(license, null);
-        CLibrary.INSTANCE.Save_Client_License(licenseNo,"D:\\logsssss.dat");
+        CLibrary.INSTANCE.Save_Client_License(licenseNo,"D:\\logsssss123.dat");
         System.out.println(licenseNo);
+
+        System.out.println(CLibrary.INSTANCE.Get_Current_No());*/
+
 
         /*TestStruct.ByReference license = CLibrary.INSTANCE.Open_Inter_License("D:\\logsssss.dat");
         System.out.println(license);*/
@@ -150,6 +99,16 @@ public class HelloWorld {
         /*Pointer buffer = new Memory(2048);
         int ret = SZEntcryptLib.INSTANCE.getTzSoftEncryptBuffer(buffer, 2048);
         System.out.println(ret);*/
+
+
+        /*String a = new String("aaa").intern();
+        String b = new String("aaa");
+        String c = "aaa";
+        System.out.println(a==b);
+        System.out.println(a==c);*/
+
+        String x1 = new String("a") + new String("b");
+        System.out.println(x1);
     }
 
 }
