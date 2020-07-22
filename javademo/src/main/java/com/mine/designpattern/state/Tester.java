@@ -1,5 +1,7 @@
 package com.mine.designpattern.state;
 
+import com.mine.designpattern.TestInner;
+
 /**
  * 状态模式和策略模式对比：https://www.runoob.com/w3cnote/state-vs-strategy.html
  * Created by jiayq24996 on 2020-01-02

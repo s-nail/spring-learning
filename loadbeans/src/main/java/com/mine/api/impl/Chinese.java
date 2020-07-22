@@ -10,6 +10,7 @@ public class Chinese implements Person {
         this.axe = axe;
     }
 
+    @Override
     public void useAxe() {
         System.out.println("我打算去砍点柴火");
         System.out.println(axe.chop());

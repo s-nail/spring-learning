@@ -46,7 +46,7 @@ public class Amian {
 		//jna win相对路径调用c/c++接口时候，直接名称不加后缀调用，如test.dll,加载时候应该使用test来加载
 		//jna linux绝对路径调用c/c++接口时候，完整路径加上后缀，如test.so,加载时候应该使用/opt/test.so来加载
 		//jna win相对路径调用c/c++接口时候，完整路径可以不接后缀，如test.dll,加载时候应该使用D:\\test来加载
-//		Test lib = (Test) Native.loadLibrary("test_64", Test.class);
+//		TestInner lib = (TestInner) Native.loadLibrary("test_64", TestInner.class);
 		Test lib = (Test) Native.load(path, Test.class);
 		// 例1
 		int re1 = lib.add(11, 9);

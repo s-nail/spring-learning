@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:gumballMachine="http://www.springframework.org/schema/gumballMachine"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/gumballMachine http://www.springframework.org/schema/gumballMachine/spring-gumballMachine.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <gumballMachine:component-scan base-package="com.mine"/>
+    <context:component-scan base-package="com.mine"/>
     <bean id="chinese" class="com.mine.api.impl.Chinese">
         <property name="axe" ref="stoneAxe" />
     </bean>
