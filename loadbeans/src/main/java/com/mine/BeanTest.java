@@ -2,6 +2,7 @@ package com.mine;
 
 import com.mine.api.Person;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,6 +25,7 @@ public class BeanTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
         Person p = ctx.getBean("chinese", Person.class);
         p.useAxe();
+//        BeanDefinitionReaderUtils
         //Resource
         // BeanDefinition
         //BeanDefinitionReader
