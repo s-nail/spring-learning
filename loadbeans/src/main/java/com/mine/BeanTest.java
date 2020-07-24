@@ -1,6 +1,7 @@
 package com.mine;
 
 import com.mine.api.Person;
+import com.mine.api.impl.TestConstructorInject;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.context.ApplicationContext;
@@ -25,6 +26,8 @@ public class BeanTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
         Person p = ctx.getBean("chinese", Person.class);
         p.useAxe();
+
+        TestConstructorInject testConstructorInject = ctx.getBean("testConstructorInject", TestConstructorInject.class);
 //        BeanDefinitionReaderUtils
         //Resource
         // BeanDefinition

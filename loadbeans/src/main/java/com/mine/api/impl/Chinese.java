@@ -7,6 +7,7 @@ public class Chinese implements Person {
     private Axe axe;
 
     public void setAxe(Axe axe) {
+        System.out.println("调用set方法进行属性注入");
         this.axe = axe;
     }
 
