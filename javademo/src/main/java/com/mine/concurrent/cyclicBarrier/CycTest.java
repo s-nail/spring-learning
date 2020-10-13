@@ -18,6 +18,6 @@ public class CycTest {
         executorpool.execute(work2);
         executorpool.execute(work3);
 
-        //executorpool.shutdown();
+        executorpool.shutdown();
     }
 }

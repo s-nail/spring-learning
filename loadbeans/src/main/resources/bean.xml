@@ -5,8 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.mine"/>
-    <bean id="chinese" class="com.mine.api.impl.Chinese">
+    <!--<context:component-scan base-package="com.mine"/>
+    <bean id="chinese" class="com.mine.api.impl.Chinese" init-method="init">
         <property name="axe" ref="stoneAxe"/>
     </bean>
     <bean id="stoneAxe" class="com.mine.api.impl.StoneAxe"/>
@@ -14,6 +14,17 @@
         <constructor-arg name="name" value="zhangsan"/>
         <constructor-arg name="age" value="22"/>
     </bean>
-    <bean id="win" class="javax.swing.JFrame"/>
-    <bean id="date" class="java.util.Date"/>
+    &lt;!&ndash;<bean id="win" class="javax.swing.JFrame"/>
+    <bean id="date" class="java.util.Date"/>&ndash;&gt;
+
+    <bean id="studentFactoryBean" class="com.mine.beanFactory_factoryBean.FactoryBeanTest">
+        <property name="name" value="Tom"/>
+        <property name="age" value="28"/>
+    </bean>-->
+    <bean id="myBeanPostProcessor" class="com.mine.MyBeanPostProcessor"></bean>
+
+    <bean id="customerService" class="com.mine.CustomerServiceImpl"
+          init-method="setup" destroy-method="teardown">
+        <property name="name" value="itcast"></property>
+    </bean>
 </beans>

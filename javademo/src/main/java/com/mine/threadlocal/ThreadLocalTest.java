@@ -8,6 +8,10 @@ public class ThreadLocalTest {
 
         ThreadLocal threadLocal = new ThreadLocal();
         threadLocal.set("哈哈");
+        //输出哈哈
+        System.out.println(threadLocal.get());
+        threadLocal.set("呵呵");
+        //输出呵呵
         System.out.println(threadLocal.get());
     }
 }

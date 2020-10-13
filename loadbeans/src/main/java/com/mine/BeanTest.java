@@ -2,9 +2,14 @@ package com.mine;
 
 import com.mine.api.Person;
 import com.mine.api.impl.TestConstructorInject;
+import com.mine.beanFactory_factoryBean.Student;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.HashSet;
@@ -18,11 +23,25 @@ import java.util.Set;
  * 2、利用1生成的context、resource初始化工厂，并将resource解析成beandefinition,再将beandefinition注册到beanfactory中。
  */
 public class BeanTest {
+
+    /*private final String ss;
+
+    public BeanTest() {
+        String tb = ss;
+        ss = "nihoa";
+    }*/
+
     public static void main(String[] args) {
-        /*Chinese p = new Chinese();
-        StoneAxe axe = new StoneAxe();
-        p.setAxe(axe);
-        p.useAxe();*/
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
+        CustomerServiceImpl customerService = ctx.getBean("customerService", CustomerServiceImpl.class);
+        customerService.add();
+
+        ((ClassPathXmlApplicationContext) ctx).close();
+
+    }
+
+    private void learn() {
+        //XmlBeanFactory
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
         Person p = ctx.getBean("chinese", Person.class);
         p.useAxe();
@@ -55,5 +74,9 @@ public class BeanTest {
         //BeanDefinitonRegistry
     }
 
-
+    private void testFactroyBean() {
+        BeanFactory bf = new ClassPathXmlApplicationContext("bean.xml");
+        Student studentBean = (Student) bf.getBean("studentFactoryBean");
+        studentBean.print();
+    }
 }

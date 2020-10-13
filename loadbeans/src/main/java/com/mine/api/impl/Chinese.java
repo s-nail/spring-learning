@@ -16,4 +16,8 @@ public class Chinese implements Person {
         System.out.println("我打算去砍点柴火");
         System.out.println(axe.chop());
     }
+
+    private void init() {
+        System.out.println("Chinese init");
+    }
 }
