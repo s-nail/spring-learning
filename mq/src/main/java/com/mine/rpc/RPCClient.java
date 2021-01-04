@@ -1,4 +1,4 @@
-package com.gupaoedu.rpc;
+package com.mine.rpc;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -8,7 +8,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeoutException;
 
-import com.gupaoedu.util.ResourceUtil;
+import com.mine.util.ResourceUtil;
 import com.rabbitmq.client.*;
 import com.rabbitmq.client.AMQP.BasicProperties;
 

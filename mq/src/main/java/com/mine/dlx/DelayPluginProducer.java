@@ -1,6 +1,6 @@
-package com.gupaoedu.dlx;
+package com.mine.dlx;
 
-import com.gupaoedu.util.ResourceUtil;
+import com.mine.util.ResourceUtil;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

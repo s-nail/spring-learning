@@ -1,6 +1,6 @@
-package com.gupaoedu.message;
+package com.mine.message;
 
-import com.gupaoedu.util.ResourceUtil;
+import com.mine.util.ResourceUtil;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;

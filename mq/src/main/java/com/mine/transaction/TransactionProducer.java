@@ -1,6 +1,6 @@
-package com.gupaoedu.transaction;
+package com.mine.transaction;
 
-import com.gupaoedu.util.ResourceUtil;
+import com.mine.util.ResourceUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;

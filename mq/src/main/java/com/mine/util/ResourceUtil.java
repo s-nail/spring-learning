@@ -1,4 +1,4 @@
-package com.gupaoedu.util;
+package com.mine.util;
 
 import java.util.ResourceBundle;
 

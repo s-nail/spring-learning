@@ -1,6 +1,6 @@
-package com.gupaoedu.rpc;
+package com.mine.rpc;
 
-import com.gupaoedu.util.ResourceUtil;
+import com.mine.util.ResourceUtil;
 import com.rabbitmq.client.*;
 import com.rabbitmq.client.AMQP.BasicProperties;
 
