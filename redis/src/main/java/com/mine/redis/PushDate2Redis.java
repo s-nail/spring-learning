@@ -1,9 +1,13 @@
 package com.mine.redis;
 
+import com.alibaba.fastjson.JSON;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 使用setnx和set指令实现分布式锁
@@ -79,11 +83,68 @@ public class PushDate2Redis {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        pushLargeNumberOfStrDate();
+        //pushLargeNumberOfStrDate();
         //lock();
 
 //        Producer();
 //        Customer();
         //Customer();
+
+        Jedis jedis = JedisUtil.getDefaultJedis();
+
+        jedis.set("name","Lee");
+        String name = jedis.get("name");
+        System.out.println(name);//输出Lee
+
+        jedis.lpush("site-list", "Runoob");
+        jedis.lpush("site-list", "Google");
+        jedis.lpush("site-list", "Taobao");
+        // 获取存储的数据并输出
+        List<String> list = jedis.lrange("site-list", 0 ,2);
+        for(int i=0; i<list.size(); i++) {
+            System.out.println("列表项为: "+list.get(i));
+        }
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("name", "Lee");
+        map.put("age", "22");
+        map.put("qq", "123456");
+        map.put("phone", "123456");
+
+        jedis.hmset("user",map);
+        List<String> rsmap = jedis.hmget("user", "name", "age", "qq","phone");
+        System.out.println(rsmap);
+
+        jedis.sadd("users","liuling");
+        jedis.sadd("users","xinxin");
+        jedis.sadd("users","ling");
+        jedis.sadd("users","zhangxinxin");
+        jedis.sadd("users","who");
+
+        //移除noname
+        //jedis.srem("users","who");
+        System.out.println(jedis.smembers("users"));//获取所有加入的value
+        System.out.println(jedis.sismember("users", "who"));//判断 who 是否是user集合的元素
+        System.out.println(jedis.srandmember("users"));
+        System.out.println(jedis.scard("users"));//返回集合的元素个数
+
+        Person person = new Person("Lee", 25);
+        Person person1 = new Person("Tom", 26);
+        Person person2 = new Person("Jim", 27);
+
+        List list1 = new ArrayList();
+        list1.add(person);
+        list1.add(person1);
+        list1.add(person2);
+        list1.add(person2);
+
+
+
+        String listStr = JSON.toJSONString(list1);
+        jedis.set("Persons", listStr);
+
+        String token = jedis.get("Persons");
+        List<Person> listCopy = JSON.parseArray(token, Person.class);
+
     }
 }

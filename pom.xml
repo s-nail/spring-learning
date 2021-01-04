@@ -13,6 +13,7 @@
         <module>loadbeans</module>
         <module>javademo</module>
         <module>redis</module>
+        <module>mq</module>
     </modules>
     <dependencies>
         <dependency>

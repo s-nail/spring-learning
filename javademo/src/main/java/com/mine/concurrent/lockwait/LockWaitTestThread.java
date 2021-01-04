@@ -1,5 +1,6 @@
 package com.mine.concurrent.lockwait;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -9,11 +10,13 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockWaitTestThread extends Thread {
 
     private Lock lock;
+    private Condition condition;
     private String threadName;
 
-    public LockWaitTestThread(Lock lock, String threadName) {
+    public LockWaitTestThread(Lock lock, Condition condition, String threadName) {
         this.lock = lock;
         this.threadName = threadName;
+        this.condition = condition;
     }
 
     @Override
@@ -23,6 +26,8 @@ public class LockWaitTestThread extends Thread {
             lock.lock();
             System.out.println(threadName + " 获得锁");
             lock.wait();
+            //condition.await();
+            //condition.signal();
             System.out.println(threadName + " wait（）释放锁");
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,14 +39,15 @@ public class LockWaitTestThread extends Thread {
 
     public static void main(String[] args) throws InterruptedException {
         Lock lock = new ReentrantLock();
-        LockWaitTestThread thread1 = new LockWaitTestThread(lock, "线程1");
+        Condition condition = lock.newCondition();
+        LockWaitTestThread thread1 = new LockWaitTestThread(lock, condition, "线程1");
         thread1.start();
 
-        Thread.sleep(3000);
-        lock.notify();
-       /* LockWaitTestThread thread2 = new LockWaitTestThread(lock, "线程2");
+        Thread.sleep(1000);
+
+        LockWaitTestThread thread2 = new LockWaitTestThread(lock, condition, "线程2");
         thread2.start();
-        LockWaitTestThread thread3 = new LockWaitTestThread(lock, "线程3");
-        thread3.start();*/
+        LockWaitTestThread thread3 = new LockWaitTestThread(lock, condition, "线程3");
+        thread3.start();
     }
 }

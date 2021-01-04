@@ -25,7 +25,7 @@ public class DistributedRedisLock {
         RLock rLock = redisson.getLock(key);
         //加锁，并且设置锁过期时间，防止死锁的产生
         rLock.lock(20, TimeUnit.SECONDS);
-        System.err.println("======lock======" + Thread.currentThread().getName());
+       // System.err.println("======lock======" + Thread.currentThread().getName());
         return true;
     }
 
@@ -41,7 +41,7 @@ public class DistributedRedisLock {
         RLock rLock = redisson.getLock(key);
         //释放锁（解锁）
         rLock.unlock();
-        System.err.println("======unlock======" + Thread.currentThread().getName());
+        //System.err.println("=====unlock=====" + Thread.currentThread().getName());
     }
 
     public static void main(String[] args) {

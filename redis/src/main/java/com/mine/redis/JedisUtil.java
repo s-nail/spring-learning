@@ -34,6 +34,7 @@ public class JedisUtil {
     public static void main(String[] args) {
         Jedis jedis = JedisUtil.getJedisFromPool("127.0.0.1", 6379);
         //Jedis jedis = JedisUtil.getJedisFromPool("127.0.0.1", 6379);
+        jedis.set("flag", "1");
         System.out.println(jedis.get("name"));
     }
 }
