@@ -8,7 +8,7 @@ import com.rabbitmq.client.ConnectionFactory;
 /**
  * @Author: qingshan
  * @Date: 2018/10/21 16:18
- * @Description: 咕泡学院，只为更好的你
+ *
  * 普通确认模式
  */
 public class NormalConfirmProducer {

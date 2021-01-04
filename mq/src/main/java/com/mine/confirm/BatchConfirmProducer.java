@@ -8,7 +8,7 @@ import com.rabbitmq.client.ConnectionFactory;
 /**
  * @Author: qingshan
  * @Date: 2018/9/21 10:52
- * @Description: 咕泡学院，只为更好的你
+ *
  * 消息生产者，测试Confirm模式
  */
 public class BatchConfirmProducer {

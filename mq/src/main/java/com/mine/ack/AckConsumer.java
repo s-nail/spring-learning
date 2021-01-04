@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @Author: qingshan
  * @Date: 2018/9/21 10:53
- * @Description: 咕泡学院，只为更好的你
+ *
  * 消息消费者，用于测试消费者手工应答和重回队列
  */
 public class AckConsumer {
